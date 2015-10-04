@@ -1,9 +1,6 @@
 #include <QCoreApplication>
-
 #include <QDir>
-#include <iostream>
-
-
+#include <Qtimer>
 #include "dirscanner.h"
 
 int main(int argc, char *argv[])
@@ -12,15 +9,7 @@ int main(int argc, char *argv[])
 
     DirScanner ds;
 
-    if ( !ds.initcycle ){
-    ds.path = "c:\\totalcmd";
-    ds.GetFileInfoList( ds.path, 0 );
-    }
-
-
-
-
-
+    ds.StartScanner(); // scieszke dostepu skanu ustawiasz w tym obiekcie
     return a.exec();
 }
 

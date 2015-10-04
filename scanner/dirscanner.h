@@ -3,12 +3,14 @@
 #include <QString>
 #include <QDir>
 #include <QDirIterator>
+#include <Qtimer>
 
 
 const QString WIDTHSPACER  = "--+";
 const QString HEIGHTSPACER = " |+ ";
 
-class DirScanner
+class DirScanner : public QObject
+
 {
 public:
 
@@ -16,12 +18,13 @@ public:
 
 
     void GetFileInfoList(QString actualpath, int cmdpaintspacer);
-    void CheckFileInfoList();
-    void PaintTreeInCmd();
+    void StartScanner();
+    void CheckForChanges();
 
+    QHash<QString, QString> map, backupmap;
     QString path;
 
-    bool initcycle;
+    bool initcycle=false;
 
     QDir directoryinfo;
     QFileInfoList fileinfolist;
@@ -32,10 +35,6 @@ private:
     QString _qwarningtext;
     int _recurentspacer;
 
-
-signals:
-
-public slots:
 };
 
 #endif // DIRSCANNER_H
