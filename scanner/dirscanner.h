@@ -15,25 +15,23 @@ class DirScanner : public QObject
 public:
 
     DirScanner();
+    ~DirScanner();
 
-
-    void GetFileInfoList(QString actualpath, int cmdpaintspacer);
-    void StartScanner();
-    void CheckForChanges();
-
-    QHash<QString, QString> map, backupmap;
-    QString path;
-
-    bool initcycle=false;
-
-    QDir directoryinfo;
-    QFileInfoList fileinfolist;
-    QFileInfo fileinfo;
+    void StartScanner(const QString actualpath);
 
 private:
+    void _GetFileInfoList(QString actualpath, int cmdpaintspacer);
+    void _CheckForChanges();
 
-    QString _qwarningtext;
+    QHash<QString, QString>* _map,* _backupmap;
+    QDir _directoryinfo;
+    QFileInfoList _fileinfolist;
+    QFileInfo _fileinfo;
+    QString _qdebugtext;
+
     int _recurentspacer;
+    bool _initcycle;
+
 
 };
 

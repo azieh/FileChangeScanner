@@ -8,8 +8,9 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
     DirScanner ds;
+    ds.StartScanner("c:\\");
 
-    ds.StartScanner(); // scieszke dostepu skanu ustawiasz w tym obiekcie
+
     return a.exec();
 }
 
